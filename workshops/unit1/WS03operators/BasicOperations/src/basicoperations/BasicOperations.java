@@ -73,6 +73,6 @@ public class BasicOperations {
     System.out.println("the division remaineder of " + dividend + " / " + divisor + 
                     " is equal to --> " + remainder);
     System.out.println("remainder is equal to --> " + remainder);
-     
+    
      } 
 }
