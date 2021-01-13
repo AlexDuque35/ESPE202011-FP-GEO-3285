@@ -73,8 +73,6 @@ int x = 10;
         p = false;
         q = false; 
         System.out.println(" ( " + p + " ^ " + q + " ) " + (p && q ));
-                     
-       
+              
     }
-    
 }
