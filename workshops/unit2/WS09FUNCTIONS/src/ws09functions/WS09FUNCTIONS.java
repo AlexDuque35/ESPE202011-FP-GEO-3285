@@ -10,17 +10,17 @@ public class WS09FUNCTIONS {
         int divd = 5;
         int divr = 10;
         float quotient = 0;
-        int x = 0;
+        int x = 9;
         int y = 0;
 
         quotient = divideTwoNumbers(divd, divr);
 
         System.out.println("Quotient of 5 and 10 is -> " + quotient);
 
-        y = f(3);
+        y = f(x);
         System.out.println("3^2 -> " + y);
 
-        y = f(-3);
+        y = f(x);
         System.out.println("-3^2 -> " + y);
 
         x = -1;
