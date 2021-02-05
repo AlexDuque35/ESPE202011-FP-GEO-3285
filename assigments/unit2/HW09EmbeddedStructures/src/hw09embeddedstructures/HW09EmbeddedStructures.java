@@ -25,8 +25,7 @@ public class HW09EmbeddedStructures {
             int multiplier = scanner2;
             int product;
 
-            product = multiplicand * multiplier;
-            System.out.println("So " + multiplicand + "*" + multiplier + "=" + product);
+            Product(multiplicand, multiplier);
         }
 
         if (scanner1 % 3 == 0) {
@@ -36,8 +35,7 @@ public class HW09EmbeddedStructures {
             int addend2 = scanner2;
             int sum;
 
-            sum = addend1 + addend2;
-            System.out.println("So " + addend1 + "+" + addend2 + "=" + sum);
+            Sum(addend1, addend2);
         }
 
         if (scanner1 % 7 == 0) {
@@ -47,8 +45,7 @@ public class HW09EmbeddedStructures {
             int divisor = scanner2;
             int remainder;
 
-            remainder = dividend % divisor;
-            System.out.println("So " + dividend + "%" + divisor + "=" + remainder);
+            Remainde(dividend, divisor);
         }
 
         if (scanner1 % 11 == 0) {
@@ -60,10 +57,7 @@ public class HW09EmbeddedStructures {
             int product = 0;
             int table = 11;
 
-            for (int j = 1; j <= top; j++) {
-                product = table * j;
-                System.out.println("11 * " + j + " = " + product);
-            }
+            PrintMultiplicandTable(top, table);
         }
 
         if (scanner1 % 13 == 0) {
@@ -73,9 +67,40 @@ public class HW09EmbeddedStructures {
             int divisor = scanner2;
             int quotient;
 
-            quotient = dividend / divisor;
-            System.out.println("So " + dividend + "/" + divisor + "=" + quotient);
+            DivideTwoNumber(dividend, divisor);
         
         }
+    }
+
+    public static void DivideTwoNumber(int dividend, int divisor) {
+        int quotient;
+        quotient = dividend / divisor;
+        System.out.println("So " + dividend + "/" + divisor + "=" + quotient);
+    }
+
+    public static void PrintMultiplicandTable(int top, int table) {
+        int product;
+        for (int j = 1; j <= top; j++) {
+            product = table * j;
+            System.out.println("11 * " + j + " = " + product);
+        }
+    }
+
+    public static void Remainde(int dividend, int divisor) {
+        int remainder;
+        remainder = dividend % divisor;
+        System.out.println("So " + dividend + "%" + divisor + "=" + remainder);
+    }
+
+    public static void Sum(int addend1, int addend2) {
+        int sum;
+        sum = addend1 + addend2;
+        System.out.println("So " + addend1 + "+" + addend2 + "=" + sum);
+    }
+
+    public static void Product(int multiplicand, int multiplier) {
+        int product;
+        product = multiplicand * multiplier;
+        System.out.println("So " + multiplicand + "*" + multiplier + "=" + product);
     }
 }
