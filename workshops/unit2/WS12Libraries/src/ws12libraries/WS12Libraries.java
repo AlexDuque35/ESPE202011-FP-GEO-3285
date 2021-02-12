@@ -26,6 +26,7 @@ public class WS12Libraries {
         float exponent3 = 5;
         float absoluteValue = 0.0F;
         float number4 = -5;
+        float number5 = 5;
 
         squareRoot = (float) Math.sqrt((float) number);
         System.out.println("The square root of --> " + number
@@ -48,8 +49,11 @@ public class WS12Libraries {
                 + " is equal to --> " + power3);
 
         absoluteValue = getAbsoluteValue(number4);
-        System.out.println( absoluteValue);
-
+        System.out.println("The Absolute value of " + number4
+                + " is equal to --> " + absoluteValue);
+        absoluteValue = getAbsoluteValue(number5);
+        System.out.println("The Absolute value of " + number5
+                + " is equal to --> " + absoluteValue);
     }
 
     public static float computePower(float base, float exponent) {
