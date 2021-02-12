@@ -287,7 +287,7 @@ public class HW12TaxCalculator {
                         return 511;
                     } else {
                         if (taxBaseImp < 42874) {
-                            return 64297;
+                            return 941;
                         } else {
                             if (taxBaseImp < 64297) {
                                 return 4156;
@@ -295,7 +295,7 @@ public class HW12TaxCalculator {
                                 if (taxBaseImp < 85729) {
                                     return 8440;
                                 } else {
-                                    if (taxBaseImp < 144288) {
+                                    if (taxBaseImp > 144288) {
                                         return 13798;
                                     } else {
                                         if (taxBaseImp > 144288) {
