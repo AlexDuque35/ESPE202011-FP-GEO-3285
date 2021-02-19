@@ -13,7 +13,6 @@ public class WS13ComputeAreasAndFormulas {
         int option;
 
         do {
-
             System.out.println("==============================");
             System.out.println("   || MEGA PRO V2 CALC ||    ");
             System.out.println(" 1. Geometric Shapes Calc");
@@ -27,6 +26,7 @@ public class WS13ComputeAreasAndFormulas {
                 case 1:
                     do {
                         System.out.println("Choose a geometic shape \n 1. Circle \n 2. Triangle \n 3. Dodecaegon \n 4. Return");
+                        option = input.nextInt();
                         switch (option) {
                             case 1:
                                 float circleArea = 0.0F;
@@ -67,10 +67,11 @@ public class WS13ComputeAreasAndFormulas {
                                 System.out.println("Invalid option\n\n\n");
                                 break;
                         }
-                    } while (option != 0);
+                    } while (option != 4);
                     break;
                 case 2:
                     System.out.println("Choose one physic equation \n 1. Force \n 2. Enery \n 3. Density \n 4. Return home ");
+                    option = input.nextInt();
                     do {
                         switch (option) {
                             case 1:
@@ -110,7 +111,7 @@ public class WS13ComputeAreasAndFormulas {
                                 System.out.println("The density is equal to --> " + density);
                                 break;
                         }
-                    } while (option != 0);
+                    } while (option != 4);
                     break;
                 default:
                     System.out.println("Invalid option\n\n\n");
