@@ -40,12 +40,11 @@ public class HW14Arrayce {
         int num;
 
         System.out.println("Enter the time that you want to study fishes movement in hours");
-        Scanner input2 = new Scanner(System.in);
         num = input.nextInt();
 
         fishesOnATank = new int[num];
 
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i < num; i++) {
             System.out.print("Enter the number of fishes on a Tank in hour " + (i + 1) + " -> ");
             fishesOnATank[i] = input.nextInt();
         }
@@ -57,19 +56,18 @@ public class HW14Arrayce {
         for (String fish : fishesSpecies) {
             System.out.println("Fishes species are -> " + fish);
         }
-        
+
         System.out.println("=========================\n *** BIRDS SANTUARY *** \n=========================");
         int[] birdsOnSector;
         String[] birdsSpecies = {"Eagle", "Condor", "Falcon", "Pidgeon", "Owls", "Toucans"};
         int number;
 
         System.out.println("Enter the numbers of sectors ");
-        Scanner input3 = new Scanner(System.in);
         number = input.nextInt();
 
-        birdsOnSector = new int[num];
+        birdsOnSector = new int[number];
 
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i < number; i++) {
             System.out.print("Enter the number of birds that live in a sector " + (i + 1) + " -> ");
             birdsOnSector[i] = input.nextInt();
         }
