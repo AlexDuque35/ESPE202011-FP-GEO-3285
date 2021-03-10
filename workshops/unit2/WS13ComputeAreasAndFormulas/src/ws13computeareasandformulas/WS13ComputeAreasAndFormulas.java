@@ -13,6 +13,7 @@ public class WS13ComputeAreasAndFormulas {
         int option;
 
         do {
+            System.out.println("Author: AlexanderDuque");
             System.out.println("==============================");
             System.out.println("   || MEGA PRO V2 CALC ||    ");
             System.out.println(" 1. Geometric Shapes Calc");

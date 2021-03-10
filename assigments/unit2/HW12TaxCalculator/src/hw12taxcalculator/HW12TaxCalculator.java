@@ -12,6 +12,7 @@ public class HW12TaxCalculator {
         int option;
 
         do {
+            System.out.println("Author: AlexanderDuque");
             System.out.println("===============================");
             System.out.println(" ***  IRS Tax Calculator  *** ");
             System.out.println("* 1. -> Value-Added Tax (VAT) *");

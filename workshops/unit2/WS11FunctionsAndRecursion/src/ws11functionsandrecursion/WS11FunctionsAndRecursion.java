@@ -107,8 +107,7 @@ public class WS11FunctionsAndRecursion {
                 + " *            is equal to ---> " + ProductTable + "                          *\n"
                 + " *                                                        * \n"
                 + " ========================================================== \n ");
-    
-        
+    }
 
     public static float divideTwoNumbers(int Dividend, int Divisor) {
 
@@ -152,21 +151,18 @@ public class WS11FunctionsAndRecursion {
 
     Scanner e = new Scanner(System.in);
 
-    System.out.println (
-    " Enter the First Value ");
-        int scanner1 = e.nextInt();
+    int number = e.nextInt();
 
-    System.out.println (
-    "Enter the Second Value");
+    System.out.println("Enter the Second Value");
         int scanner2 = e.nextInt();
 
     if (scanner1
 
     
         % 2 == 0) {
-            System.out.println("The number " + scanner1 + " Is Divisible for 2. \n");
+            System.out.println("The number " + number + " Is Divisible for 2. \n");
         System.out.println("The number " + scanner2 + " Is Divisible for 2. \n");
-        int multiplicand = scanner1;
+        int multiplicand = number;
         int multiplier = scanner2;
         int product;
 
@@ -177,9 +173,9 @@ public class WS11FunctionsAndRecursion {
 
     
         % 3 == 0) {
-            System.out.println("The number " + scanner1 + " Is Divisible for 3. \n");
+            System.out.println("The number " + number + " Is Divisible for 3. \n");
         System.out.println("The number " + scanner2 + " Is Divisible for 3. \n");
-        int addend1 = scanner1;
+        int addend1 = number;
         int addend2 = scanner2;
         int sum;
 
@@ -190,9 +186,9 @@ public class WS11FunctionsAndRecursion {
 
     
         % 7 == 0) {
-            System.out.println("The number " + scanner1 + " Is Divisible for 7. \n");
+            System.out.println("The number " + number + " Is Divisible for 7. \n");
         System.out.println("The number " + scanner2 + " Is Divisible for 7. \n");
-        int dividend = scanner1;
+        int dividend = number;
         int divisor = scanner2;
         int remainder;
 
@@ -203,7 +199,7 @@ public class WS11FunctionsAndRecursion {
 
     
         % 11 == 0) {
-            System.out.println("The number " + scanner1 + " Is Divisible for 11. \n");
+            System.out.println("The number " + number + " Is Divisible for 11. \n");
         System.out.println("The number " + scanner2 + " Is Divisible for 11. \n");
         System.out.println("====== MULTIPLICATION : 11 ======");
 
@@ -218,9 +214,9 @@ public class WS11FunctionsAndRecursion {
 
     
         % 13 == 0) {
-            System.out.println("The number " + scanner1 + " Is Divisible for 13. \n");
+            System.out.println("The number " + number + " Is Divisible for 13. \n");
         System.out.println("The number " + scanner2 + " Is Divisible for 13. \n");
-        int dividend = scanner1;
+        int dividend = number;
         int divisor = scanner2;
         int quotient;
 
