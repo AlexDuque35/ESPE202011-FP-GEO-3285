@@ -38,16 +38,16 @@ public class HW16MatrixFunctions {
         }
         System.out.println(" A");
 
-        printMatrix(m, n, A);
+        prettyPrintMatrix(m, n, A);
         System.out.println("");
 
         System.out.println(" B ");
-        printMatrix(m, n, B);
+        prettyPrintMatrix(m, n, A);
 
         System.out.println("--The difference of matrices is--");
 
         C = subtractTwoMatrices(m, n, A, B);
-        printMatrix(m, n, C);
+        prettyPrintMatrix(m, n, A);
     }
 
     public static float[][] readMatrixElements(int m, int n, String matrixName, Scanner input) {
@@ -81,32 +81,33 @@ public class HW16MatrixFunctions {
             for (int j = 0; j < n; j++) {
                 if (j == 0) {
                     if (i == 0) {
-                        System.out.println("\t");
+                        System.out.print("┌ \t");
                     } else if (i == m - 1) {
-                        System.out.println("\t");
+                        System.out.print("└\t");
 
                     } else {
-                        System.out.println("\t");
+                        System.out.print("│\t");
                     }
                 }
-                System.out.println(matrix[i][j]);
+                System.out.print(matrix[i][j]);
                 if (j > -1 && j < (n - 1)) {
-                    System.out.println("\t");
+                    System.out.print("\t");
                 }
                 if (j == (n - 1)) {
                     if (i == 0) {
-                        System.out.println("\t");
+                        System.out.print(" \t┐");
                     } else if (i == m - 1) {
-                        System.out.println("\t");
+                        System.out.print(" \t┘");
 
                     } else {
-                        System.out.println("\t");
+                        System.out.print("  \t│");
                     }
                 }
             }
         }
         System.out.println("");
     }
+
 
     public static void printMatrix(int m, int n, float[][] matrix) {
         for (int i = 0; i < m; i++) {

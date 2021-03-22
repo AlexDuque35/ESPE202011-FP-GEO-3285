@@ -1,7 +1,7 @@
 package modularitycalculator;
 
 import java.util.Scanner;
-import utills.BasicOperators;
+import util.BasicOperators;
 
 /**
  *
