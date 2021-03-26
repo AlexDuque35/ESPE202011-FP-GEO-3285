@@ -2,7 +2,6 @@ package ec.edu.espe.carModels.view;
 
 import ec.edu.espe.carModels.controller.Search;
 import ec.edu.espe.carModels.controller.Sorting;
-import java.util.Arrays;
 import javax.swing.JOptionPane;
 
 /**
@@ -181,11 +180,10 @@ public class FrmCarModels extends javax.swing.JFrame {
         String sortedArrayofcarsModels = "";
 
         readElements(carModels);
-        sortingCarModels = Sorting.
-        sortModels(carModels);
-
+        sortingCarModels = Sorting.sortModels(carModels);
+        
         for (String carModel : carModels) {
-            sortedArrayofcarsModels = sortedArrayofcarsModels + " " + carModel;
+            sortedArrayofcarsModels = sortedArrayofcarsModels + ", " + carModel;
         }
 
         txtSortedArray.setText(sortedArrayofcarsModels);
@@ -206,15 +204,13 @@ public class FrmCarModels extends javax.swing.JFrame {
     index = Search.findModel(carModels, dataToFind);
         
             if (index == -1) {
-                JOptionPane.showMessageDialog(null, dataToFind + "Searching ", " is NOT found ", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, dataToFind + " is NOT found ","Searching", JOptionPane.ERROR_MESSAGE );
             } else {
                 JOptionPane.showMessageDialog(null, dataToFind + " is found");
             }
            
     }//GEN-LAST:event_BtnSearchActionPerformed
-
-    
-
+   
     public void readElements(String[] carModels) {
         carModels[0] = txtModel1.getText();
         carModels[1] = txtModel2.getText();
@@ -223,25 +219,7 @@ public class FrmCarModels extends javax.swing.JFrame {
         carModels[4] = txtModel5.getText();
         carModels[5] = txtModel6.getText();
     }
-
-    public String[] sortModels(String[] carModels) {
-        for (int i = 0; i < 6; i++) {
-            for (int j = i + 1; j < 6; j++) {
-                if (carModels[i].compareTo(carModels[j]) > 0) {
-                    String temp = carModels[i];
-                    carModels[i] = carModels[j];
-                    carModels[j] = temp;
-                }
-            }
-        }
-        System.out.print("Strings in Sorted Order:");
-        for (int i = 0; i <= 6 - 1; i++) {
-            System.out.print(carModels[i] + ", ");
-
-        }
-        return carModels;
-    }
-
+    
     public static void main(String args[]) {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
