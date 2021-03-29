@@ -1,0 +1,5 @@
+Ecuador , South America , Lenin Moreno , 17846475 , Catholic
+Germany , Europe , Angela Merkel , 83783942 , Christianity
+Russia , Europe , Vladimir Putin , 146238200 , Orthodox
+United States , North America , Joe Biden , 332915073 , None
+Ethiopia , Africa , Sahle Work Zewde , 117103270 , Islam
