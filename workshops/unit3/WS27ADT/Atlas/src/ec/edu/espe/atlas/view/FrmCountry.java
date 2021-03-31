@@ -2,13 +2,8 @@ package ec.edu.espe.atlas.view;
 
 import ec.edu.espe.atlas.controller.CountryController;
 import ec.edu.espe.atlas.model.Country;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import sun.util.logging.PlatformLogger;
+import utills.FileManager;
 
 /**
  *
@@ -18,12 +13,21 @@ public class FrmCountry extends javax.swing.JFrame {
 
     public FrmCountry() {
         initComponents();
+        CountryController countryController = new CountryController();
+        String[] lines = new String[FileManager.countLines("countries")];
+        Country[] countries = new Country[FileManager.countLines("countries")];
+
+        countryController.read(lines, countries);
+
+        countryController.populateCountriesTable(tblCountries, countries);
     }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -42,6 +46,22 @@ public class FrmCountry extends javax.swing.JFrame {
         txtDisplayCountries = new javax.swing.JTextArea();
         BtmShowAtlas = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tblCountries = new javax.swing.JTable();
+        BtmFindACountry = new javax.swing.JButton();
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane2.setViewportView(jTable1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -81,6 +101,26 @@ public class FrmCountry extends javax.swing.JFrame {
 
         jLabel8.setText("DISPLAY COUNTRIES:");
 
+        tblCountries.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane3.setViewportView(tblCountries);
+
+        BtmFindACountry.setText("FIND A COUNTRY");
+        BtmFindACountry.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtmFindACountryActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -91,14 +131,8 @@ public class FrmCountry extends javax.swing.JFrame {
                         .addGap(163, 163, 163)
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(84, 84, 84)
-                        .addComponent(BtmSubmit)
-                        .addGap(68, 68, 68)
-                        .addComponent(BtmShowAtlas))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(20, 20, 20)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel8)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(38, 38, 38)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -117,11 +151,19 @@ public class FrmCountry extends javax.swing.JFrame {
                                             .addComponent(txtPresident)
                                             .addComponent(txtReligion)
                                             .addComponent(txtName)
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                                .addComponent(CmbLocation, javax.swing.GroupLayout.Alignment.LEADING, 0, 168, Short.MAX_VALUE)
-                                                .addComponent(txtCurrency, javax.swing.GroupLayout.Alignment.LEADING))
-                                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE))))))))
-                .addContainerGap(77, Short.MAX_VALUE))
+                                            .addComponent(CmbLocation, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(txtCurrency)
+                                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addComponent(BtmShowAtlas)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(BtmFindACountry)))
+                                .addGap(18, 18, 18)
+                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(BtmSubmit)
+                                .addComponent(jLabel8)))))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -129,22 +171,27 @@ public class FrmCountry extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(19, 19, 19)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(CmbLocation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(7, 7, 7)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(txtCurrency, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(txtPresident, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(19, 19, 19)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(CmbLocation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(7, 7, 7)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4)
+                            .addComponent(txtCurrency, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(20, 20, 20)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel5)
+                            .addComponent(txtPresident, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(34, 34, 34)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(txtPopulation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -156,10 +203,11 @@ public class FrmCountry extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(BtmSubmit)
-                            .addComponent(BtmShowAtlas)))
+                            .addComponent(BtmShowAtlas)
+                            .addComponent(BtmFindACountry)))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel8)
                         .addGap(0, 0, Short.MAX_VALUE)))
@@ -189,27 +237,44 @@ public class FrmCountry extends javax.swing.JFrame {
 
         country = new Country(name, location, currency, president, population, religion);
 
-        countryController.submit(country);
+        countryController.save(country);
 
         JOptionPane.showMessageDialog(rootPane, country.getName());
+
+        emptyFields();
+        BtmShowAtlasActionPerformed(evt);
+//        countryController.populateCountriesTable(tblCountries, countries);
 
     }//GEN-LAST:event_BtmSubmitActionPerformed
 
     private void BtmShowAtlasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtmShowAtlasActionPerformed
 
-        File file = new File("C:\\Users\\aduqu\\Desktop\\THE X CODE\\ESPE202011-FP-GEO-3285\\workshops\\unit3\\WS27ADT\\Atlas\\Coutries.txt");
-        
-        try {
-            BufferedReader read = new BufferedReader(new FileReader(file));
-            String line = read.readLine();
-            while (line != null) {
-                txtDisplayCountries.append(line + "\n");
-                line = read.readLine();
-            }
-        } catch (Exception ex) {
-            Logger.getLogger(FrmCountry.class.getName()).log(Level.SEVERE, null, ex);
+        String[] lines = new String[FileManager.countLines("country")];
+        CountryController countryController = new CountryController();
+        Country[] countries = new Country[FileManager.countLines("country")];
+
+        countryController.read(lines, countries);
+
+        for (Country country : countries) {
+            txtDisplayCountries.setText(txtDisplayCountries.getText() + "\n" + country.getName());
         }
+
+        countryController.populateCountriesTable(tblCountries, countries);
     }//GEN-LAST:event_BtmShowAtlasActionPerformed
+
+    private void BtmFindACountryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtmFindACountryActionPerformed
+
+        String[] lines = new String[FileManager.countLines("countries")];
+        CountryController countryController = new CountryController();
+        Country[] countries = new Country[FileManager.countLines("countries")];
+        countryController.read(lines, countries);
+        int index = countryController.find(countries, txtName.getText());
+        if (index == -1) {
+            JOptionPane.showMessageDialog(rootPane, "NOT FOUND", "NOT FOUND", JOptionPane.ERROR_MESSAGE);
+        } else {
+            tblCountries.setRowSelectionInterval(index, index);
+        }
+    }//GEN-LAST:event_BtmFindACountryActionPerformed
 
     public static void main(String args[]) {
 
@@ -247,7 +312,17 @@ public class FrmCountry extends javax.swing.JFrame {
         });
     }
 
+    private void emptyFields() {
+        txtName.setText("Nill");
+        CmbLocation.setSelectedItem("Choose");
+        txtCurrency.setText("");
+        txtPresident.setText("");
+        txtPopulation.setText("");
+        txtReligion.setText("");
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BtmFindACountry;
     private javax.swing.JButton BtmShowAtlas;
     private javax.swing.JButton BtmSubmit;
     private javax.swing.JComboBox<String> CmbLocation;
@@ -260,6 +335,10 @@ public class FrmCountry extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tblCountries;
     private javax.swing.JTextField txtCurrency;
     private javax.swing.JTextArea txtDisplayCountries;
     private javax.swing.JTextField txtName;

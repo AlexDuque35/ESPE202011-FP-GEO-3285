@@ -3,3 +3,5 @@ Germany , Europe , Angela Merkel , 83783942 , Christianity
 Russia , Europe , Vladimir Putin , 146238200 , Orthodox
 United States , North America , Joe Biden , 332915073 , None
 Ethiopia , Africa , Sahle Work Zewde , 117103270 , Islam
+Spain , Europe , Pedro Sanchez , 46937060 , Catholic
+Mexico , North America , Andres Lopez , 127525529 , Catholic
